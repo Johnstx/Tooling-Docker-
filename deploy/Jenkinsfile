@@ -2,13 +2,22 @@ pipeline {
     agent any
 
 
+         environment {
+        DOCKER_IMAGE = "Todo-${GIT_BRANCH}" // name of the image to be built
+        DOCKER_TAG = "v${BUILD_NUMBER}"
+        REPO_URL = "https://github.com/Johnstx/Containerization.git"
+        DOCKER_REGISTRY = 
+        GIT_BRANCH = "test-0.0.1" 
+
+         }
       stages {
-        stage('Build') {
+
+     stage("Initial cleanup") {
           steps {
-            script {
-              sh 'echo "Building Stage"'
+            dir("${WORKSPACE}") {
+              deleteDir()
             }
           }
         }
-        }
   }
+}
