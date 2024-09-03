@@ -10,35 +10,35 @@
         agent any
 
         stages {
-          
+
           stage ('Checkout SCM') {
             steps {
               git branch: 'feature' , url : 'https://github.com/Johnstx/Tooling-Docker-.git',   credentialsId: 'github-login'
             }
           }
 
-  //         // stage('Docker Build Image') {
-  //         //      steps {
-  //         //             script {
-  //         //                 // Build the Docker image and assign it to dockerImage
-  //         //                 dockerImage = docker.build("${registry}:latest")
-  //         //                   }
-  //         //             }
-  //         //     }
-  //         }
+          // stage('Docker Build Image') {
+          //      steps {
+          //             script {
+          //                 // Build the Docker image and assign it to dockerImage
+          //                 dockerImage = docker.build("${registry}:latest")
+          //                   }
+          //             }
+          //     }
+          // }
 
 
 
-  //         // // stage('Docker Build image') {
-  //         // //   steps {
-  //         // //       script {
-  //         // //            docker.withRegistry( '' ,  'dockerHub' ) {
-  //         // //                 // Build the Docker image and assign it to dockerImage 
-  //         // //                 dockerImage = docker.build("${registry}:latest")
-  //         // //                  }
-  //         // //       }
-  //         // //   }
-  //         // // }
+          stage('Docker Build image') {
+            steps {
+                script {
+                     docker.withRegistry( '' ,  'dockerHub' ) {
+                          // Build the Docker image and assign it to dockerImage 
+                          dockerImage = docker.build("${registry}:latest")
+                           }
+                }
+            }
+          }
 
   //         // stage ('tag the docker image') {
   //         //   steps {
