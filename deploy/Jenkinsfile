@@ -5,7 +5,6 @@
         environment {
         registry = "johnstx/tooling" 
         registryCredential = credentials('dockerHub' )// Jenkins credentials ID for Docker Hub
-        registry = ''
         TAG = 'latest'
 
         }
