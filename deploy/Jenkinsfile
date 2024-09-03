@@ -4,9 +4,8 @@
 
         environment {
         registry = "johnstx/tooling" 
-        registryCredential = credentials('dockerHub' )// Jenkins credentials ID for Docker Hub
+        registryCredential = 'dockerHub' // Jenkins credentials ID for Docker Hub
         TAG = 'latest'
-
         }
 
     agent any
@@ -29,9 +28,10 @@
 
           stage('Docker Build image') {
             steps {
-              script {
-                  docker.withRegistry('',  "$(registryCredential)") {
-                  dockerImage = docker.build("$(registry):latest")
+                script {
+                     docker.withRegistry('',  registryCredential) {
+                          // Build the Docker image and assign it to dockerImage 
+                         dockerImage = docker.build("${registry}:latest")
                   }
                 }
             }
