@@ -4,30 +4,57 @@
 
         environment {
         registry = "johnstx/tooling" 
-        registryCredential = 'dockerHub' 
-        dockerImage = ''
+        registryCredential = credentials('dockerHub' )// Jenkins credentials ID for Docker Hub
+        registry = ''
+        TAG = 'latest'
 
+        }
 
     agent any
 
-  stages {
-    stage('Build') {
-      steps {
-        script {
-          sh 'echo "Building Stage"'
-        }
-      }
-    }
+    stages {
+          stage ('Initial cleanup') {
+            steps {
+                    dir("${WORKSPACE}") {
+                  deleteDir ()
+                    }
+            }
+          }
 
-    stage('Test') {
-      steps {
-        script {
-          sh 'echo "Testing Stage"'
-        }
-      }
+
+          stage ('Checkout SCM') {
+            steps {
+              git branch: 'feature' , url : 'https://github.com/Johnstx/Tooling-Docker-.git', credentialsId: 'GitHub-login'
+            }
+          }
+
+          stage('Docker Build image') {
+            steps {
+              script {
+                  dockerImage = docker.build registry
+              }
+            }
+          }
+
+          stage ('tag the docker image') {
+            steps {
+                sh 'docker image tag ${registry}:latest ${registry}:feature-0.0.1'
+            }
+          }
+
+          stage('Deploy docker image to docker hub') {
+            steps {
+              script {
+                // log in to docker hub
+                 docker.withRegistry ( '', "${registryCredential}" ) {
+                 dockerImage.push()
+                 }
+              }
+
+            }
+          }
     }
-    }
-}
+  }
 
 
 // pipeline {
