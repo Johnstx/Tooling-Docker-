@@ -6,9 +6,11 @@
         registryCredential = 'dockerHub' // Jenkins credentials ID for Docker Hub
         TAG = 'latest'
         }
+        
+        agent any
 
         stages {
-
+          
           stage ('Checkout SCM') {
             steps {
               git branch: 'feature' , url : 'https://github.com/Johnstx/Tooling-Docker-.git',   credentialsId: 'github-login'
