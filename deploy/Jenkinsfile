@@ -30,8 +30,10 @@
           stage('Docker Build image') {
             steps {
               script {
-                  dockerImage = docker.build registry
-              }
+                  docker.withRegistry('',  registryCredential){
+                  dockerImage = docker.build("$(registry):latest")
+                  }
+                }
             }
           }
 
