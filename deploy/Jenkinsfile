@@ -32,7 +32,7 @@
           stage('Docker Build image') {
             steps {
                 script {
-                     docker.withRegistry( '' ,  'dockerHub' ) {
+                     docker.withRegistry( '' ,  'dockerhub-login' ) {
                           // Build the Docker image and assign it to dockerImage 
                           dockerImage = docker.build("${registry}:latest")
                            }
