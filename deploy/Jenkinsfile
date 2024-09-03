@@ -26,46 +26,46 @@
             }
           }
 
-          stage('Docker Build Image') {
-               steps {
-                      script {
-                                  // Build the Docker image and assign it to dockerImage
-                                  dockerImage = docker.build registry
-                                   }
-                      }
-              }
-          }
-
-
-
-          // stage('Docker Build image') {
-          //   steps {
-          //       script {
-          //            docker.withRegistry( '' ,  'dockerHub' ) {
-          //                 // Build the Docker image and assign it to dockerImage 
-          //                 dockerImage = docker.build("${registry}:latest")
-          //                  }
-          //       }
-          //   }
+          // stage('Docker Build Image') {
+          //      steps {
+          //             script {
+          //                         // Build the Docker image and assign it to dockerImage
+          //                         dockerImage = docker.build registry
+          //                          }
+          //             }
+          //     }
           // }
 
-          stage ('tag the docker image') {
-            steps {
-                sh 'docker image tag ${registry}:latest ${registry}:feature-0.0.1'
-                }
-          }
 
-          stage('Deploy docker image to docker hub') {
-            steps {
-              script {
-                         // log in to docker hub
-                      docker.withRegistry ( '', registryCredential) {
-                            dockerImage.push()
-                 }
-              }
 
-            }
-          }
+          // // stage('Docker Build image') {
+          // //   steps {
+          // //       script {
+          // //            docker.withRegistry( '' ,  'dockerHub' ) {
+          // //                 // Build the Docker image and assign it to dockerImage 
+          // //                 dockerImage = docker.build("${registry}:latest")
+          // //                  }
+          // //       }
+          // //   }
+          // // }
+
+          // stage ('tag the docker image') {
+          //   steps {
+          //       sh 'docker image tag ${registry}:latest ${registry}:feature-0.0.1'
+          //       }
+          // }
+
+          // stage('Deploy docker image to docker hub') {
+          //   steps {
+          //     script {
+          //                // log in to docker hub
+          //             docker.withRegistry ( '', registryCredential) {
+          //                   dockerImage.push()
+          //        }
+          //     }
+
+          //   }
+          // }
 
           // stage('Remove unsused images'){
           //    steps{
@@ -80,28 +80,3 @@
 
     }
   }
-
-
-// pipeline {
-//     agent any
-
-
-//          environment {
-//         DOCKER_IMAGE = "Todo-${GIT_BRANCH}" // name of the image to be built
-//         DOCKER_TAG = "v${BUILD_NUMBER}"
-//         REPO_URL = "https://github.com/Johnstx/Containerization.git"
-//         DOCKER_REGISTRY = 
-//         GIT_BRANCH = "feature" 
-
-//          }
-//       stages {
-
-//      stage("Initial cleanup") {
-//           steps {
-//             dir("${WORKSPACE}") {
-//               deleteDir()
-//             }
-//           }
-//         }
-//   }
-// }
