@@ -29,9 +29,9 @@
           stage('Docker Build Image') {
                steps {
                       script {
-                                  // Build the Docker image and assign it to dockerImage
-                                  dockerImage = docker.build registry
-                                   }
+                          // Build the Docker image and assign it to dockerImage
+                          dockerImage = docker.build("${registry}:latest")
+                            }
                       }
               }
           }
