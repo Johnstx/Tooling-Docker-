@@ -4,7 +4,7 @@
 
         environment {
         registry = "johnstx/tooling" 
-        // registryCredential = 'dockerHub' // Jenkins credentials ID for Docker Hub
+        registryCredential = 'dockerHub' // Jenkins credentials ID for Docker Hub
         TAG = 'latest'
         }
 
@@ -26,16 +26,29 @@
             }
           }
 
-          stage('Docker Build image') {
-            steps {
-                script {
-                     docker.withRegistry( '' ,  'dockerHub' ) {
-                          // Build the Docker image and assign it to dockerImage 
-                          dockerImage = docker.build("${registry}:latest")
-                           }
-                }
-            }
+          stage('Docker Build Image') {
+               steps {
+                      script {
+                              docker.withRegistry('', registryCredential) {
+                                  // Build the Docker image and assign it to dockerImage
+                                  dockerImage = docker.build("${registry}:latest")
+                                   }
+                      }
+              }
           }
+
+
+
+          // stage('Docker Build image') {
+          //   steps {
+          //       script {
+          //            docker.withRegistry( '' ,  'dockerHub' ) {
+          //                 // Build the Docker image and assign it to dockerImage 
+          //                 dockerImage = docker.build("${registry}:latest")
+          //                  }
+          //       }
+          //   }
+          // }
 
           stage ('tag the docker image') {
             steps {
