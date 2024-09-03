@@ -29,9 +29,8 @@
           stage('Docker Build Image') {
                steps {
                       script {
-                              docker.withRegistry('', registryCredential) {
                                   // Build the Docker image and assign it to dockerImage
-                                  dockerImage = docker.build("${registry}:latest")
+                                  dockerImage = docker.build registry
                                    }
                       }
               }
@@ -59,14 +58,26 @@
           stage('Deploy docker image to docker hub') {
             steps {
               script {
-                // log in to docker hub
-                 docker.withRegistry ( '', 'dockerHub') {
-                      dockerImage.push()
+                         // log in to docker hub
+                      docker.withRegistry ( '', registryCredential) {
+                            dockerImage.push()
                  }
               }
 
             }
           }
+
+          // stage('Remove unsused images'){
+          //    steps{
+          //           sh "docker rmi $registry:latest"
+          //           sh "docker rmi ${registry}:feature-0.0.1"
+          }
+        }
+
+      }
+
+
+
     }
   }
 
