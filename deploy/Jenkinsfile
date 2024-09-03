@@ -26,15 +26,15 @@
             }
           }
 
-          // stage('Docker Build Image') {
-          //      steps {
-          //             script {
-          //                         // Build the Docker image and assign it to dockerImage
-          //                         dockerImage = docker.build registry
-          //                          }
-          //             }
-          //     }
-          // }
+          stage('Docker Build Image') {
+               steps {
+                      script {
+                                  // Build the Docker image and assign it to dockerImage
+                                  dockerImage = docker.build registry
+                                   }
+                      }
+              }
+          }
 
 
 
