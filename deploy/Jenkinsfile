@@ -7,7 +7,7 @@
         TAG = 'latest'
         }
 
- 
+        stages {
 
           stage ('Checkout SCM') {
             steps {
@@ -65,7 +65,7 @@
 
   //     // }
 
-
+        }
 
     }
   
