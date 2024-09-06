@@ -37,7 +37,6 @@
                            }
                 }
             }
-          }
 
   //         // stage ('tag the docker image') {
   //         //   steps {
@@ -45,26 +44,27 @@
   //         //       }
   //         // }
 
-  //         // stage('Deploy docker image to docker hub') {
-  //         //   steps {
-  //         //     script {
-  //         //                // log in to docker hub
-  //         //             docker.withRegistry ( '', registryCredential) {
-  //         //                   dockerImage.push()
-  //         //        }
-  //         //     }
+          stage('Deploy docker image to docker hub') {
+            steps {
+              script {
+                         // log in to docker hub
+                      docker.withRegistry ( '', registryCredential) {
+                            dockerImage.push()
+                 }
+              }
 
-  //         //   }
-  //         // }
+            }
+          }
+        }
 
-  //         // stage('Remove unsused images'){
-  //         //    steps{
-  //         //           sh "docker rmi $registry:latest"
-  //         //           sh "docker rmi ${registry}:feature-0.0.1"
-  //         // }
-  //     //   }
+          // stage('Remove unsused images'){
+          //    steps{
+          //           sh "docker rmi $registry:latest"
+          //           sh "docker rmi ${registry}:feature-0.0.1"
+          // }
+      //   }
 
-  //     // }
+      // }
 
         }
 
