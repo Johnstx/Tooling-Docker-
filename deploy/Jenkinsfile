@@ -3,7 +3,7 @@
         environment {
         registry = "johnstx/tooling" 
         registryCredential = 'dockerhub-login' // Jenkins credentials ID for Docker Hub
-        TAG = 'latest'
+        BUILD_TAG = 'feature-0.0.1'
         }
         
         agent any
@@ -15,8 +15,6 @@
               git branch: 'feature' , url : 'https://github.com/Johnstx/Tooling-Docker-.git',   credentialsId: 'github-login'
             }
           }
-
-        }
 
           // stage('Docker Build Image') {
           //      steps {
@@ -35,11 +33,11 @@
                 script {
                     //  docker.withRegistry( '' ,  'dockerhub-login' ) {
                           // Build the Docker image and assign it to dockerImage 
-                          dockerImage = docker.build("${env.REGISTRY}:feature-0.0.1") 
+                          dockerImage = docker.build("${env.REGISTRY}:${env.BUILD_TAG}")
                            }
                 }
             }
-        
+          }
 
   //         // stage ('tag the docker image') {
   //         //   steps {
