@@ -16,18 +16,7 @@
             }
           }
 
-          // stage('Docker Build Image') {
-          //      steps {
-          //             script {
-          //                 // Build the Docker image and assign it to dockerImage
-          //                 dockerImage = docker.build("${registry}:latest")
-          //                   }
-          //             }
-          //     }
-          // }
-
-
-
+  
           stage('Docker Build image') {
             steps {
                 script {
