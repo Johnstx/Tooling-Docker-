@@ -16,6 +16,8 @@
             }
           }
 
+        }
+
           // stage('Docker Build Image') {
           //      steps {
           //             script {
@@ -33,11 +35,11 @@
                 script {
                     //  docker.withRegistry( '' ,  'dockerhub-login' ) {
                           // Build the Docker image and assign it to dockerImage 
-                          dockerImage = docker.build("${env.REGISTRY}:feature-0.0.1
+                          dockerImage = docker.build("${env.REGISTRY}:feature-0.0.1") 
                            }
                 }
             }
-          }
+        
 
   //         // stage ('tag the docker image') {
   //         //   steps {
