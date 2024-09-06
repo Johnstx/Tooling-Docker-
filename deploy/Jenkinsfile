@@ -49,7 +49,10 @@
           stage('Remove unsused images'){
              steps{
                     // sh "docker rmi $registry:latest"
+                      docker.withRegistry ( '', registryCredential) {
+                            dockerImage.push()
                     sh "docker rmi ${registry}:feature-0.0.1"
+                     }
           }
         }
 
