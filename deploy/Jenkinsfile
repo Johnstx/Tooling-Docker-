@@ -1,9 +1,9 @@
    pipeline {
 
         environment {
-        REGISTRY = "johnstx/tooling" 
+        registry = "johnstx/tooling" 
         registryCredential = 'dockerhub-login' // Jenkins credentials ID for Docker Hub
-        TAG = 'latest'
+        BUILD_TAG = 'feature-0.0.1'
         }
         
         agent any
@@ -67,5 +67,6 @@
   //     // }
 
         }
+
 
   
