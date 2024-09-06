@@ -1,7 +1,7 @@
    pipeline {
 
         environment {
-        REGISTRY = "johnstx/tooling" 
+        registry = "johnstx/tooling" 
         registryCredential = 'dockerhub-login' // Jenkins credentials ID for Docker Hub
         TAG = 'latest'
         }
@@ -33,7 +33,7 @@
                 script {
                     //  docker.withRegistry( '' ,  'dockerhub-login' ) {
                           // Build the Docker image and assign it to dockerImage 
-                          dockerImage = docker.build("${env.REGISTRY}:${env.BUILD_TAG}")
+                          dockerImage = docker.build("${env.REGISTRY}:feature-0.0.1
                            }
                 }
             }
@@ -67,5 +67,6 @@
   //     // }
 
         }
+
 
   
