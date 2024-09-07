@@ -3,7 +3,7 @@
         environment {
         registry = "johnstx/tooling" 
         registryCredential = 'dockerhub-login' // Jenkins credentials ID for Docker Hub
-        BUILD_TAG = 'feature-0.0.1'
+        BUILD_TAG = 'master-0.0.1'
         }
         
         agent any
@@ -16,18 +16,7 @@
             }
           }
 
-          // stage('Docker Build Image') {
-          //      steps {
-          //             script {
-          //                 // Build the Docker image and assign it to dockerImage
-          //                 dockerImage = docker.build("${registry}:latest")
-          //                   }
-          //             }
-          //     }
-          // }
-
-
-
+  
           stage('Docker Build image') {
             steps {
                 script {
@@ -55,16 +44,16 @@
 
             }
           }
+      
+
+          stage('Remove unsused images'){
+             steps{
+                    // sh "docker rmi $registry:latest"
+                    sh "docker rmi ${registry}:feature-0.0.1"
+          }
         }
 
-          // stage('Remove unsused images'){
-          //    steps{
-          //           sh "docker rmi $registry:latest"
-          //           sh "docker rmi ${registry}:feature-0.0.1"
-          // }
-      //   }
-
-      // }
+      }
 
         }
 
