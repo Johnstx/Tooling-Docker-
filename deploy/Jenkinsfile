@@ -34,7 +34,7 @@
             steps {
                 script {
                     //  docker  build using docker-compose
-                          sh "docker-compose -f "${Docker_compose_file}" build"
+                          sh "docker-compose -f ${Docker_compose_file} build"
                            }
                 }
             }
