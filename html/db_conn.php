@@ -10,10 +10,10 @@ $dotenv->load();
 // enabling environment variable for php
 
 
-$servername = $_ENV["MYSQL_IP"]; // input servername
-$username = $_ENV["MYSQL_USER"]; // input username
-$password = $_ENV["MYSQL_PASS"]; //input password
-$dbname = $_ENV["MYSQL_DBNAME"]; // input dbname
+$servername = "db"; // input servername
+$username = "staxx"; // input username
+$password = "movement"; //input password
+$dbname = "toolingdb"; // input dbname
 
 
 // Create connection
