@@ -3,8 +3,8 @@
         environment {
         registry = "johnstx/tooling" 
         registryCredential = 'dockerhub-login' // Jenkins credentials ID for Docker Hub
-        TAG = 'space-0.0.1'
-        Docker_compose_file = 'tooling.yaml'
+        image_name = "johnstx/tool"
+        Docker_compose_file = "tooling.yaml"
                // BUILD_TAG = 'master-0.0.1'
         }
         
@@ -42,7 +42,7 @@
           stage ('tag the docker image') {
             steps {
               script {
-                sh ''docker image tag ${registry}:latest ${registry}:cmpse-0.0.1''
+                sh "docker image tag ${image_name }:latest ${registry}:cmpse-0.0.1"
                  } 
                 }
           }
@@ -72,11 +72,11 @@
             steps {
                 script {
                     // Clean up local Docker images to save space
-                    sh "docker rmi ${registry}:latest"
-                    sh "docker rmi ${registry}:latest ${registry}:cmpse-0.0.1"
+                    sh "docker rmi ${image_name }:latest"
+                    sh "docker rmi ${registry}:cmpse-0.0.1"
                   }
              }
- }
+         }
         }
    }
 

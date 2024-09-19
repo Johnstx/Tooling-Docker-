@@ -2,7 +2,7 @@ version: "3.9"
 services:
   tooling_frontend:
     build: .
-    image: johnstx/tooling
+    image: johnstx/tool
     ports:
       - "5000:80"
     volumes:
