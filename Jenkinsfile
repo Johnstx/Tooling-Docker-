@@ -15,7 +15,7 @@
 
           stage ('Checkout SCM') {
             steps {
-              git branch: 'feature' , url : 'https://github.com/Johnstx/Tooling-Docker-.git',   credentialsId: 'github-login'
+              git branch: 'compose' , url : 'https://github.com/Johnstx/Tooling-Docker-.git',   credentialsId: 'github-login'
             }
           }
 
