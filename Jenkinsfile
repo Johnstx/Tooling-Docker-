@@ -12,12 +12,19 @@
 
         stages {
 
+
           stage ('Checkout SCM') {
             steps {
               git branch: 'feature' , url : 'https://github.com/Johnstx/Tooling-Docker-.git',   credentialsId: 'github-login'
             }
           }
 
+
+          stage('Clean Workspace') {
+                steps {
+                         cleanWs() // Cleans the workspace before running the pipeline
+                }
+              }
   
           // stage('Docker Build image') {
           //   steps {
@@ -55,7 +62,6 @@
                             dockerImage.push()
                  }
               }
-
             }
           }
       
