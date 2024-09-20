@@ -61,7 +61,9 @@
               script {
                          // log in to docker hub
                       docker.withRegistry ( '', registryCredential) {
-                            dockerImage.push()
+                            // dockerImage.push()
+                            // push the tagged image
+                            sh "docker push ${registry}:cmpse-0.0.1"
                  }
               }
             }
