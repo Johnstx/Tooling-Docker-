@@ -4,7 +4,7 @@
         registry = "johnstx/tooling" 
         registryCredential = 'dockerhub-login' // Jenkins credentials ID for Docker Hub
         image_name = "johnstx/tool"
-        Docker_compose_file = "Tooling-Docker-/tooling.yaml"
+        Docker_compose_file = "tooling.yaml"
                // BUILD_TAG = 'master-0.0.1'
         }
         
